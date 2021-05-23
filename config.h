@@ -10,6 +10,10 @@ static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "1", "+5%", 
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "1", "-5%", NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "1", "toggle", NULL };
 
+/* backlight */
+static const char *brightnessup[] = {"xbacklight", "-inc", "10", NULL };
+static const char *brightnessdown[] = {"xbacklight", "-dec", "10", NULL };
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -129,7 +133,8 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol } },
-
+  { 0, XF86XK_MonBrightnessUp, spawn, {.v = brightnessup} },
+  { 0, XF86XK_MonBrightnessDown, spawn, {.v = brightnessdown} },
 };
 
 /* button definitions */
