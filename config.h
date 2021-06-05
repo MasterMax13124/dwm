@@ -6,7 +6,7 @@
 #include <X11/XF86keysym.h>
 
 static const char *systemdsuspendslock[] = {"/usr/local/bin/slock", NULL};
-static const char *duckselectfirefox[] = {"/home/max/shellscripts/duckselectfirefox.sh", NULL};
+static const char *duckselectfirefox[] = {"/home/max/dotfiles/Arch/dwmscripts/duckselectfirefox.sh", NULL};
  
 /* volume keys*/
 static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
