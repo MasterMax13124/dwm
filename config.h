@@ -4,11 +4,14 @@
 // volume control from: https://gist.github.com/palopezv/efd34059af6126ad970940bcc6a90f2e
 // volume status with: //  xsetroot -name "Volume: $(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')%"
 #include <X11/XF86keysym.h>
+
+static const char *systemdsuspendslock[] = {"/usr/local/bin/slock", NULL};
+static const char *duckselectfirefox[] = {"/home/max/shellscripts/duckselectfirefox.sh", NULL};
  
 /* volume keys*/
-static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "1", "+5%", NULL };
-static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "1", "-5%", NULL };
-static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "1", "toggle", NULL };
+static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
+static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%", NULL };
+static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute", "0", "toggle", NULL };
 
 /* backlight */
 static const char *brightnessup[] = {"xbacklight", "-inc", "10", NULL };
@@ -19,8 +22,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "fira code nerd font:size=16" };
+static const char dmenufont[]       = "fira code nerd font:size=16";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -55,7 +58,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -74,9 +77,9 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "瓦",      tile },    /* first entry is default */
+	{ "浮",      NULL },    /* no layout function means floating behavior */
+	{ "M",      monocle },
 };
 
 /* key definitions */
@@ -135,6 +138,8 @@ static Key keys[] = {
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol } },
   { 0, XF86XK_MonBrightnessUp, spawn, {.v = brightnessup} },
   { 0, XF86XK_MonBrightnessDown, spawn, {.v = brightnessdown} },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,           {.v = systemdsuspendslock} },
+	{ MODKEY|ShiftMask,             XK_u,      spawn,           {.v = duckselectfirefox} },
 };
 
 /* button definitions */
