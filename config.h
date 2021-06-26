@@ -6,7 +6,8 @@
 #include <X11/XF86keysym.h>
 
 static const char *systemdsuspendslock[] = {"/usr/local/bin/slock", NULL};
-static const char *duckselectfirefox[] = {"/home/max/dotfiles/Arch/dwmscripts/duckselectfirefox.sh", NULL};
+static const char *duckselectfirefox[] = {"/home/max/scripts/duckselectfirefox.sh", NULL};
+static const char *firefoxbookmarks[] = {"/home/max/scripts/bookmarks.sh", NULL};
  
 /* volume keys*/
 static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
@@ -142,6 +143,7 @@ static Key keys[] = {
   { 0, XF86XK_MonBrightnessDown, spawn, {.v = brightnessdown} },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,           {.v = systemdsuspendslock} },
 	{ MODKEY|ShiftMask,             XK_u,      spawn,           {.v = duckselectfirefox} },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,           {.v = firefoxbookmarks} },
 };
 
 /* button definitions */
