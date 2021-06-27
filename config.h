@@ -30,7 +30,12 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 
-static const unsigned int gappx = 6; /* gap pixel between windows */
+static const unsigned int gappih = 16; //inner horizontal gaps
+static const unsigned int gappiv = 16; //inner vertical gaps
+static const unsigned int gappoh = 10; //outer horizontal gaps
+static const unsigned int gappov = 10; //outer vertical gaps
+static const unsigned int smartgaps = 0;
+
 //static const char col_cyan[]        = "#005577";
 //static const char *colors[][3]      = {
 	///*               fg         bg         border   */
@@ -96,7 +101,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", norm_bg, "-sf", col_gray4, NULL };
+//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", norm_bg, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = {"dmenu_run", "-bw", "2", "-l", "30", NULL};
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
 
