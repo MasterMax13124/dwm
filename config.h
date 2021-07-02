@@ -30,18 +30,11 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 
-static const unsigned int gappih = 16; //inner horizontal gaps
-static const unsigned int gappiv = 16; //inner vertical gaps
-static const unsigned int gappoh = 10; //outer horizontal gaps
-static const unsigned int gappov = 10; //outer vertical gaps
+static const unsigned int gappih = 25; //inner horizontal gaps
+static const unsigned int gappiv = 40; //inner vertical gaps
+static const unsigned int gappoh = 40; //outer horizontal gaps
+static const unsigned int gappov = 40; //outer vertical gaps
 static const unsigned int smartgaps = 0;
-
-//static const char col_cyan[]        = "#005577";
-//static const char *colors[][3]      = {
-	///*               fg         bg         border   */
-	//[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	//[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-//};
 
 //colors from https://github.com/plasmoduck/themes/blob/master/gruvbox-hard/colors-wal-dwm.h
 static const char norm_fg[] = "#D5C4A1";
@@ -73,7 +66,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	//{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
