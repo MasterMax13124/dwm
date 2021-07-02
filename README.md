@@ -5,6 +5,7 @@ This repo contains my personal modified version of [dwm](https://dwm.suckless.or
 ## Features of this build
 
 - Gaps between windows, using this [patch](https://dwm.suckless.org/patches/vanitygaps/)
+- Swallows (terminal) windows, using this [patch](https://dwm.suckless.org/patches/swallow/)
 - Support for volume control buttons, from this [gist](https://gist.github.com/palopezv/efd34059af6126ad970940bcc6a90f2e)
 - Support for brightness controls, through xbacklight, very similar to gist mentioned above
 - Gruvbox colors from [here](https://github.com/plasmoduck/themes/blob/master/gruvbox-hard/colors-wal-dwm.h)
