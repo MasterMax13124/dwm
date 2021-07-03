@@ -5,9 +5,6 @@
 // volume status with: //  xsetroot -name "Volume: $(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')%"
 #include <X11/XF86keysym.h>
 
-static const char *systemdsuspendslock[] = {"/usr/local/bin/slock", NULL};
-static const char *duckselectfirefox[] = {"/home/max/scripts/duckselectfirefox.sh", NULL};
-static const char *firefoxbookmarks[] = {"/home/max/scripts/bookmarks.sh", NULL};
  
 /* volume keys*/
 static const char *upvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%", NULL };
@@ -101,12 +98,20 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = {"dmenu_run", "-bw", "2", "-l", "30", NULL};
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *browsercmd[]  = { "firefox", NULL };
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "60x18", NULL }; //120x34
+static const char *screenshotcmd[] = { "scrot", NULL };
+static const char *systemdsuspendslock[] = {"/usr/local/bin/slock", NULL};
+static const char *duckselectfirefox[] = {"/home/max/scripts/duckselectfirefox.sh", NULL};
+static const char *firefoxbookmarks[] = {"/home/max/scripts/bookmarks.sh", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_space,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_f, spawn,          {.v = browsercmd } },
+	{ MODKEY,                       XK_p,  togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY|ShiftMask,                       XK_p,      spawn,      {.v = screenshotcmd} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -120,8 +125,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_z,  setlayout,      {0} },
+	{ MODKEY|ShiftMask,             XK_z,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
